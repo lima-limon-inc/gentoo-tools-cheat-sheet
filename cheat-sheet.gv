@@ -1,5 +1,75 @@
 digraph cheat_sheet {
   // node define
-  start [label="~ $"]
-  emerge
+  node [
+  shape = box
+  ];
+
+  graph [
+  layout = dot,
+  nodesep = 1.5,
+  ranksep = 1.0,
+  normalize = false,
+  root=start
+  ];
+
+  edge [
+    style = solid,
+    fontsize = 14,
+    labeldistance = 2.5,
+    labelangle = 70
+  ];
+
+
+  start [label="Start"]
+  emergeAsk [label="emerge -a"]
+  emergeSearch [label="emerge --search"]
+  gpoZugaina [label="Go to gpo.zugaina.org", URL="https://graphviz.org/docs/nodes/"]
+  eselectRepo [label="eselect repository enable <overlay name>"]
+  eselectRepoSync1 [label="eselect repository sync -r <overlay name>"]
+  ebuildWriting [label="Go to ebuild writing guide" URL="https://devmanual.gentoo.org/ebuild-writing/index.html"]
+  qlist [label="qlist -IURv"]
+  emergeDeselect [label="emerge --deselect <package>"]
+  emergeDepclean [label="emerge --depclean"]
+
+
+  // Nodes used for demarking options
+  joint1 [shape="none", label="", width=0, height=0]
+  joint2 [shape="none", label="", width=0, height=0]
+  joint3 [shape="none", label="", width=0, height=0]
+  joint4 [shape="none", label="", width=0, height=0]
+  joint5 [shape="none", label="", width=0, height=0]
+  joint6 [shape="none", label="", width=0, height=0]
+  joint7 [shape="none", label="", width=0, height=0]
+  joint8 [shape="none", label="", width=0, height=0]
+  joint9 [shape="none", label="", width=0, height=0]
+  joint10 [shape="none", label="", width=0, height=0]
+  joint11 [shape="none", label="", width=0, height=0]
+
+
+
+  start -> joint3 [dir=none, label="installing"]
+  joint3 -> emergeAsk [label="install a package"]
+  emergeAsk -> joint5 [label="Are there no ebuilds to satisfy a package?"]
+
+  start -> joint2 [label="searching"]
+  joint2 -> emergeSearch [label="Search a package in \n overlays present in your system"]
+  joint2 -> gpoZugaina [label="Search the package in \n \"all\" the overlays"]
+  emergeSearch -> gpoZugaina [label="It isn't there?"]
+  gpoZugaina -> joint5 [label="It's in an overlay you don't \n have in your system?"]
+  eselectRepo -> eselectRepoSync1 [label="Sync the repository with your system"]
+  gpoZugaina -> ebuildWriting [label="It's not there either? \n You can write it yourself!"]
+
+  start -> joint4[label="listing", dir=none]
+  joint4 -> qlist
+
+  start -> joint5[label="overlays", dir=none]
+  joint5 -> eselectRepo [label="add an overlay"]
+
+  start -> joint6[label="uninstalling", dir=none]
+  joint6 -> emergeDeselect[label="This removes the package from the world file"]
+  emergeDeselect -> emergeDepclean[label="This uninstalls the package & \n its unneeded dependencies"]
+  //joint5 -> qlist
+
+
+
 }
