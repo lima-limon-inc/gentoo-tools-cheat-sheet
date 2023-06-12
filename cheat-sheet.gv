@@ -27,7 +27,7 @@ digraph cheat_sheet {
   eselectRepo [label="eselect repository enable <overlay name>"]
   eselectRepoSync1 [label="eselect repository sync -r <overlay name>"]
   ebuildWriting [label="Go to ebuild writing guide" URL="https://devmanual.gentoo.org/ebuild-writing/index.html"]
-  qlist [label="qlist -IURv"]
+  qlist [label="qlist -IURv", fontcolor=blue3]
   emergeDeselect [label="emerge --deselect <package>"]
   emergeDepclean [label="emerge --depclean"]
 

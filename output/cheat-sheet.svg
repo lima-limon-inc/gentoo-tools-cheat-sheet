@@ -149,7 +149,7 @@
 <g id="node8" class="node">
 <title>qlist</title>
 <polygon fill="none" stroke="black" points="846.62,-570 769.12,-570 769.12,-534 846.62,-534 846.62,-570"/>
-<text text-anchor="middle" x="807.88" y="-546.95" font-family="Times,serif" font-size="14.00">qlist &#45;IURv</text>
+<text text-anchor="middle" x="807.88" y="-546.95" font-family="Times,serif" font-size="14.00" fill="#0000cd">qlist &#45;IURv</text>
 </g>
 <!-- emergeDeselect -->
 <g id="node9" class="node">
