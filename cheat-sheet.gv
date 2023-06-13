@@ -23,14 +23,14 @@ digraph cheat_sheet {
   start [label="Start"]
   emergeAsk [label="emerge -a"]
   emergeSearch [label="emerge --search"]
-  gpoZugaina [label="Go to gpo.zugaina.org", URL="https://graphviz.org/docs/nodes/"]
+  gpoZugaina [label="Go to gpo.zugaina.org", shape=ellipse, URL="https://graphviz.org/docs/nodes/"]
   eselectRepo [label="eselect repository enable <overlay name>"]
   eselectRepoSync1 [label="eselect repository sync -r <overlay name>"]
-  ebuildWriting [label="Go to ebuild writing guide" URL="https://devmanual.gentoo.org/ebuild-writing/index.html"]
+  ebuildWriting [label="Go to ebuild writing guide", shape=ellipse URL="https://devmanual.gentoo.org/ebuild-writing/index.html"]
   qlist [label="qlist -IURv", fontcolor=indigo]
   emergeDeselect [label="emerge --deselect <package>"]
   emergeDepclean [label="emerge --depclean"]
-  guru [label="Check the guru overlay", URL="https://gitweb.gentoo.org/repo/proj/guru.git/tree/"]
+  guru [label="Check the guru overlay", shape=ellipse, URL="https://gitweb.gentoo.org/repo/proj/guru.git/tree/"]
   genlop [label="genlop -lu", fontcolor=blue3]
 
 
@@ -73,7 +73,8 @@ digraph cheat_sheet {
   joint6 -> emergeDeselect[label="This removes the package from the world file"]
   emergeDeselect -> emergeDepclean[label="This uninstalls the package & \n its unneeded dependencies"]
 
-  start -> genlop [label="Check installation and uninstallation history"]
+  start -> joint7 [label="miscellaneous",dir=none]
+  joint7 -> genlop [label="Check installation and \n uninstallation history"]
 
 
 
