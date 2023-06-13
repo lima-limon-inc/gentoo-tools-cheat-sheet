@@ -27,10 +27,11 @@ digraph cheat_sheet {
   eselectRepo [label="eselect repository enable <overlay name>"]
   eselectRepoSync1 [label="eselect repository sync -r <overlay name>"]
   ebuildWriting [label="Go to ebuild writing guide" URL="https://devmanual.gentoo.org/ebuild-writing/index.html"]
-  qlist [label="qlist -IURv", fontcolor=blue3]
+  qlist [label="qlist -IURv", fontcolor=indigo]
   emergeDeselect [label="emerge --deselect <package>"]
   emergeDepclean [label="emerge --depclean"]
   guru [label="Check the guru overlay", URL="https://gitweb.gentoo.org/repo/proj/guru.git/tree/"]
+  genlop [label="genlop -lu", fontcolor=blue3]
 
 
   // Nodes used for demarking options
@@ -71,7 +72,8 @@ digraph cheat_sheet {
   start -> joint6[label="uninstalling", dir=none]
   joint6 -> emergeDeselect[label="This removes the package from the world file"]
   emergeDeselect -> emergeDepclean[label="This uninstalls the package & \n its unneeded dependencies"]
-  //joint5 -> qlist
+
+  start -> genlop [label="Check installation and uninstallation history"]
 
 
 
