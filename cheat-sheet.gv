@@ -65,8 +65,6 @@ digraph cheat_sheet {
   eselectRepo -> emaintSync [label="Sync the repository with your system"]
   gpoZugaina -> ebuildWriting [label="It's not there either? \n You can write it yourself!"]
 
-  start -> joint4[label="listing", dir=none]
-  joint4 -> qlist
 
   start -> joint5[label="overlays", dir=none]
   joint5 -> eselectRepo [label="add an overlay"]
@@ -75,10 +73,13 @@ digraph cheat_sheet {
   joint6 -> emergeDeselect[label="This removes the package from the world file"]
   emergeDeselect -> emergeDepclean[label="This uninstalls the package & \n its unneeded dependencies"]
 
-  start -> joint7 [label="miscellaneous",dir=none]
-  joint7 -> genlop [label="Check installation and \n uninstallation history"]
+  start -> joint4 [label="miscellaneous",dir=none]
+  joint4 -> genlop [label="Check installation and \n uninstallation history"]
+  joint4 -> qlist[label="listing installed packages"]
 
-  start -> emaintSyncAll [label="update"]
+  //joint4 -> qlist
+
+  start -> emaintSyncAll [label="update (sync all of your overlays)"]
   emaintSyncAll -> emergeUpdate [label="Updates to your installed packages"]
   emergeUpdate -> emergeDepclean
 
