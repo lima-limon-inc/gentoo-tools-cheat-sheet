@@ -22,10 +22,12 @@ digraph cheat_sheet {
 
   start [label="Start"]
   emergeAsk [label="emerge -a"]
+  emergeUpdate [label="emerge -avuDN @world"]
   emergeSearch [label="emerge --search"]
   gpoZugaina [label="Go to gpo.zugaina.org", shape=ellipse, URL="https://graphviz.org/docs/nodes/"]
   eselectRepo [label="eselect repository enable <overlay name>"]
-  emaintSync [label="eselect repository sync -r <overlay name>"]
+  emaintSync [label="emaint sync -r <overlay name>"]
+  emaintSyncAll [label="emaint sync --auto"]
   ebuildWriting [label="Go to ebuild writing guide", shape=ellipse URL="https://devmanual.gentoo.org/ebuild-writing/index.html"]
   qlist [label="qlist -IURv", fontcolor=indigo]
   emergeDeselect [label="emerge --deselect <package>"]
@@ -50,7 +52,8 @@ digraph cheat_sheet {
 
 
   start -> joint3 [dir=none, label="installing"]
-  joint3 -> emergeAsk [label="install a package"]
+  joint3 -> emergeAsk [label="a specific package"]
+  joint3 -> emergeUpdate [label="Updates to your installed packages"]
   emergeAsk -> guru [label="Are there no ebuilds to satisfy a package?"]
 
   start -> joint2 [label="searching", dir=none]
@@ -75,6 +78,9 @@ digraph cheat_sheet {
 
   start -> joint7 [label="miscellaneous",dir=none]
   joint7 -> genlop [label="Check installation and \n uninstallation history"]
+
+  start -> emaintSyncAll [label="update"]
+  emaintSyncAll -> emergeUpdate
 
 
 
