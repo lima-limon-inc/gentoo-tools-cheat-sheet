@@ -53,7 +53,6 @@ digraph cheat_sheet {
 
   start -> joint3 [dir=none, label="installing"]
   joint3 -> emergeAsk [label="a specific package"]
-  joint3 -> emergeUpdate [label="Updates to your installed packages"]
   emergeAsk -> guru [label="Are there no ebuilds to satisfy a package?"]
 
   start -> joint2 [label="searching", dir=none]
@@ -80,7 +79,10 @@ digraph cheat_sheet {
   joint7 -> genlop [label="Check installation and \n uninstallation history"]
 
   start -> emaintSyncAll [label="update"]
-  emaintSyncAll -> emergeUpdate
+  emaintSyncAll -> emergeUpdate [label="Updates to your installed packages"]
+  emergeUpdate -> emergeDepclean
+
+  //joint3 -> emergeUpdate 
 
 
 
