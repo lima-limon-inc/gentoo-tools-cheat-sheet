@@ -30,6 +30,7 @@ digraph cheat_sheet {
   qlist [label="qlist -IURv", fontcolor=blue3]
   emergeDeselect [label="emerge --deselect <package>"]
   emergeDepclean [label="emerge --depclean"]
+  guru [label="Check the guru overlay", URL="https://gitweb.gentoo.org/repo/proj/guru.git/tree/"]
 
 
   // Nodes used for demarking options
@@ -49,13 +50,15 @@ digraph cheat_sheet {
 
   start -> joint3 [dir=none, label="installing"]
   joint3 -> emergeAsk [label="install a package"]
-  emergeAsk -> joint5 [label="Are there no ebuilds to satisfy a package?"]
+  emergeAsk -> guru [label="Are there no ebuilds to satisfy a package?"]
 
-  start -> joint2 [label="searching"]
+  start -> joint2 [label="searching", dir=none]
   joint2 -> emergeSearch [label="Search a package in \n overlays present in your system"]
   joint2 -> gpoZugaina [label="Search the package in \n \"all\" the overlays"]
-  emergeSearch -> gpoZugaina [label="It isn't there?"]
-  gpoZugaina -> joint5 [label="It's in an overlay you don't \n have in your system?"]
+  guru -> joint5 [label="You don't have guru enabled in your system?", dir=none]
+  emergeSearch -> guru [label="It isn't there?"]
+  guru -> gpoZugaina [label="It isn't there either?"]
+  gpoZugaina -> joint5 [label="It's in an overlay you don't \n have in your system?", dir=none]
   eselectRepo -> eselectRepoSync1 [label="Sync the repository with your system"]
   gpoZugaina -> ebuildWriting [label="It's not there either? \n You can write it yourself!"]
 
